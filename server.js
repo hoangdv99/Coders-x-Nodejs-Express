@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 const app = express();
 const booksRoute = require('./routes/books.route');
 const usersRoute = require('./routes/users.route');
@@ -13,7 +14,8 @@ app.set("views", "./views");
 app.use(bodyParser.json()); 
 // for parsing application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true })); 
-
+//for parsing cookie
+app.use(cookieParser());
 //books route
 app.use('/books', booksRoute);
 //users route
@@ -23,6 +25,8 @@ app.use('/transactions', transactionsRoute);
 
 //static files
 app.use(express.static('public'));
+
+
 
 // listen for requests :)
 app.listen(3000, () => {

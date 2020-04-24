@@ -4,7 +4,7 @@ const db = require('../db');
 module.exports.getUsers = function (req, res) {
     res.render('users', {
         users: db.get('users').value()
-    });
+    }); 
 }
 
 module.exports.postCreateUser = function (req, res) {
