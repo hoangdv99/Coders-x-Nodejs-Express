@@ -5,7 +5,7 @@ const controller = require('../controllers/users.controller');
 router.get('/', controller.getUsers);
 
 //create route
-router.post('/create', controller.postCreateUser);
+router.post('/', controller.postCreateUser);
 
 //delete item
 router.get('/:id/delete', controller.deleteUser);
