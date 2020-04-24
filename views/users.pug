@@ -1,0 +1,12 @@
+extends ../layouts/header
+block content
+  form(action="/users/create", method="post")
+    .form-group
+      label Username
+      input.form-control(name="username", type="text")
+    button.btn.btn-primary Create
+  ul
+    each user in users
+      li= user.username
+        a(href="/users/"+user.id+"/edit") &nbsp Edit &nbsp
+        a(href="/users/"+user.id+"/delete") Delete

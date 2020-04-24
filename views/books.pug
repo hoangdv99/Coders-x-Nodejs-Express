@@ -1,0 +1,16 @@
+extends ../layouts/header
+block content
+  form(action="/books/create", method="post")
+    .form-group
+      label(for="") Title
+      input.form-control(name="title", type="text")
+    .form-group
+      label Description
+      input.form-control(name="description", type="text")
+    button.btn.btn-primary Create
+  ul
+    each book in books
+      li= book.title
+        a(href="/books/"+book.id+"/edit") &nbsp Edit &nbsp
+        a(href="/books/"+book.id+"/delete") Delete
+

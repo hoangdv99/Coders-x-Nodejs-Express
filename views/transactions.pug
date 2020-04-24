@@ -1,0 +1,18 @@
+extends ../layouts/header
+block content
+    h3 Transactions
+    a(href="/transactions/create", class="btn btn-primary btn-lg active", role="button", aria-pressed="true") Create transaction
+    table.table
+        tr.thead-dark
+            th ID
+            th User Id
+            th Book Id
+            th State
+        each transaction in transactions
+            if transaction.isCompleted == false
+                tr
+                td= transaction.id
+                td= transaction.userId
+                td= transaction.bookId
+                td
+                    a(href="/transactions/"+transaction.id+"/complete") Complete

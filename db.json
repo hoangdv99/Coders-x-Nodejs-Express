@@ -1,0 +1,68 @@
+{
+  "books": [
+    {
+      "title": "Home",
+      "description": "book1",
+      "id": "zJ1vakiC1"
+    },
+    {
+      "title": "Harry Potter 1",
+      "description": "book1",
+      "id": "SgBqBv8M5"
+    },
+    {
+      "title": "book1",
+      "description": "book1",
+      "id": "qThLXyNDi"
+    },
+    {
+      "title": "book3",
+      "description": "book3",
+      "id": "3wno49tth"
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "id": "R1EgOvXDS"
+    },
+    {
+      "username": "user1",
+      "id": "kbmZOIgAi"
+    },
+    {
+      "username": "user3",
+      "id": "RHb2wHECn"
+    },
+    {
+      "username": "user3",
+      "id": "agTYxwPez"
+    }
+  ],
+  "transactions": [
+    {
+      "userId": "R1EgOvXDS",
+      "bookId": "zJ1vakiC1",
+      "id": "1LJt98tED",
+      "isCompleted": true
+    },
+    {
+      "userId": "R1EgOvXDS",
+      "bookId": "zJ1vakiC1",
+      "id": "sQASZCRDu",
+      "isCompleted": false
+    },
+    {
+      "userId": "kbmZOIgAi",
+      "bookId": "SgBqBv8M5",
+      "id": "rUFytYbQL",
+      "isCompleted": true
+    },
+    {
+      "userId": "agTYxwPez",
+      "bookId": "3wno49tth",
+      "isCompleted": false,
+      "id": "KEkfvuS0t"
+    }
+  ]
+}

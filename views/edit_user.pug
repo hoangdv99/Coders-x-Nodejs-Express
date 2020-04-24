@@ -1,0 +1,7 @@
+extends ../layouts/header
+block content
+    form(action="/users/"+id+"/edit", method="post")
+        .form-group
+            Label Edit username
+            input.form-control(name="username", type="text")
+        button.btn.btn-primary Summit

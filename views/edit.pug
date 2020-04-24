@@ -1,0 +1,7 @@
+extends ../layouts/header
+block content
+    form(action="/books/"+id+"/edit", method="post")
+        .form-group
+            label Edit title
+            input.form-control(name="title", type="text")
+        button.btn.btn-primary Summit
