@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/users.controller');
-
+const validate = require('../validate/users.validate');
 router.get('/', controller.getUsers);
 
 //create route
-router.post('/', controller.postCreateUser);
+router.post('/', validate.createUser, controller.postCreateUser);
 
 //delete item
 router.get('/:id/delete', controller.deleteUser);

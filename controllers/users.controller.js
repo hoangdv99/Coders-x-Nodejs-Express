@@ -8,22 +8,8 @@ module.exports.getUsers = function (req, res) {
 }
 
 module.exports.postCreateUser = function (req, res) {
-    let errors = [];
-    let username = req.body.username;
-    req.body.id = shortid.generate();
-    if(username.length > 30){
-        errors.push("User name cannot be more than 30 character!");
-    }
-    if(errors.length){
-        res.render('users', {
-            errors: errors,
-            users: db.get('users').value()
-        });
-    }else{
-        db.get('users').push(req.body).write();
-        res.redirect('/users');
-    }
-    
+    db.get('users').push(req.body).write();
+    res.redirect('/users');
 }
 
 module.exports.deleteUser = function (req, res) {
