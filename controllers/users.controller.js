@@ -1,4 +1,5 @@
 const shortid = require('shortid');
+const md5 = require('md5');
 const db = require('../db');
 
 module.exports.getUsers = function (req, res) {
@@ -7,9 +8,23 @@ module.exports.getUsers = function (req, res) {
     }); 
 }
 
+module.exports.getCreateUser = function(req, res){
+    res.render('create_user', {
+        errors: []
+    });
+}
+
 module.exports.postCreateUser = function (req, res) {
-    db.get('users').push(req.body).write();
-    res.redirect('/users');
+    let username = req.body.username;
+    let email = req.body.email;
+    let password = req.body.password;
+    let hashedPassword = md5(password);
+    
+    db.get('users').push({ id: shortid.generate(),
+                           username: username,
+                           email: email,
+                           password: hashedPassword}).write();
+    res.redirect('/login');
 }
 
 module.exports.deleteUser = function (req, res) {

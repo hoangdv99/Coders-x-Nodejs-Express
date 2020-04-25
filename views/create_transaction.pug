@@ -1,11 +1,11 @@
 extends ../layouts/header
 block content
-    h3 Create Transaction
+
     form(action="/transactions/create", method="post")
-        select(name="username")
-            each user in users
-                option(value= user.username)= user.username
-        select(name="title")
-            each book in books
-                option(value= book.title)= book.title
-        button Create
+        .form-row.align-items-center
+            .col-auto.my-1
+            label.mr-sm-2(for='inlineFormCustomSelect') Books
+            select#inlineFormCustomSelect.custom-select.mr-sm-2(name="bookTitle")
+                each book in books
+                    option= book.title
+            button.btn.btn-primary(type='submit') Create

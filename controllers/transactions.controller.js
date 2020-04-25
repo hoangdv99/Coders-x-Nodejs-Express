@@ -16,9 +16,12 @@ module.exports.getCreateTransaction = function(req, res){
 }
 
 module.exports.postCreateTransaction = function(req, res){
-    req.body.isCompleted = false;
-    req.body.id = shortid.generate();
-    db.get('transactions').push(req.body).write();
+    let user = db.get('users').find({ id: req.cookies.userId}).value();
+
+    db.get('transactions').push({ id: shortid.generate(),
+                                  isCompleted: false,
+                                  username: user.username,
+                                  bookTitle: req.body.bookTitle}).write();
     res.redirect('/transactions');
 }
 

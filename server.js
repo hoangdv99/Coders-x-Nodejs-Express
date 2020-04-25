@@ -21,7 +21,7 @@ app.use(cookieParser());
 //books route
 app.use('/books', authMiddleware.requireAuth, booksRoute);
 //users route
-app.use('/users', authMiddleware.requireAuth, usersRoute);
+app.use('/users', usersRoute);
 //transaction route
 app.use('/transactions', authMiddleware.requireAuth, transactionsRoute);
 //auth route

@@ -12,7 +12,7 @@ block content
                 tr
                     td= transaction.id
                     td= transaction.username
-                    td= transaction.title
+                    td= transaction.bookTitle
                     if transaction.isCompleted == false
                         td Uncompleted
                     else
@@ -22,14 +22,12 @@ block content
         table.table
             tr.thead-dark
                 th ID
-                th Username
                 th Book Title
                 th State
                 each transaction in transactions
                     if transaction.isCompleted == false && transaction.username == user.username
                         tr
                             td= transaction.id
-                            td= transaction.username
-                            td= transaction.title
+                            td= transaction.bookTitle
                             td
                                 a(href="/transactions/"+transaction.id+"/complete") Complete
