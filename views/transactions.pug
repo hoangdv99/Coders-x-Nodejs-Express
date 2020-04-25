@@ -1,18 +1,35 @@
 extends ../layouts/header
 block content
     h3 Transactions
-    a(href="/transactions/create", class="btn btn-primary btn-lg active", role="button", aria-pressed="true") Create transaction
-    table.table
-        tr.thead-dark
-            th ID
-            th User Id
-            th Book Id
-            th State
-        each transaction in transactions
-            if transaction.isCompleted == false
+    if user.isAdmin == true
+        table.table
+            tr.thead-dark
+                th ID
+                th Username
+                th Book Title
+                th State
+            each transaction in transactions
                 tr
-                td= transaction.id
-                td= transaction.userId
-                td= transaction.bookId
-                td
-                    a(href="/transactions/"+transaction.id+"/complete") Complete
+                    td= transaction.id
+                    td= transaction.username
+                    td= transaction.title
+                    if transaction.isCompleted == false
+                        td Uncompleted
+                    else
+                        td Completed
+    else
+        a(href="/transactions/create", class="btn btn-primary btn-lg active", role="button", aria-pressed="true") Create transaction
+        table.table
+            tr.thead-dark
+                th ID
+                th Username
+                th Book Title
+                th State
+                each transaction in transactions
+                    if transaction.isCompleted == false && transaction.username == user.username
+                        tr
+                            td= transaction.id
+                            td= transaction.username
+                            td= transaction.title
+                            td
+                                a(href="/transactions/"+transaction.id+"/complete") Complete

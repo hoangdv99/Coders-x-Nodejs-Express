@@ -5,6 +5,8 @@ const app = express();
 const booksRoute = require('./routes/books.route');
 const usersRoute = require('./routes/users.route');
 const transactionsRoute = require('./routes/transactions.route');
+const authMiddleware = require('./middlewares/authLogin.middleware');
+const authRoute = require('./routes/auth.route');
 //set pug engine
 app.set("view engine", "pug");
 app.set("views", "./views");
@@ -17,12 +19,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //for parsing cookie
 app.use(cookieParser());
 //books route
-app.use('/books', booksRoute);
+app.use('/books', authMiddleware.requireAuth, booksRoute);
 //users route
-app.use('/users', usersRoute);
+app.use('/users', authMiddleware.requireAuth, usersRoute);
 //transaction route
-app.use('/transactions', transactionsRoute);
-
+app.use('/transactions', authMiddleware.requireAuth, transactionsRoute);
+//auth route
+app.use('/login', authRoute);
 //static files
 app.use(express.static('public'));
 

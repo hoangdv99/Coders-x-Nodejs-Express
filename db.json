@@ -24,49 +24,48 @@
   "users": [
     {
       "username": "admin",
-      "id": "R1EgOvXDS"
+      "id": "R1EgOvXDS",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "isAdmin": true
     },
     {
-      "username": "user1",
-      "id": "kbmZOIgAi"
+      "username": "user1", 
+      "id": "kbmZOIgAi",
+      "email": "user1@gmail.com",
+      "password": "123456"
     },
     {
       "username": "user3",
-      "id": "RHb2wHECn"
+      "id": "RHb2wHECn",
+      "email": "user2@gmail.com",
+      "password": "123456"
     },
     {
       "username": "user3",
-      "id": "agTYxwPez"
+      "id": "agTYxwPez",
+      "email": "user3@gmail.com",
+      "password": "123456"
     },
     {
       "username": "hoangdv",
-      "id": "3W4yMC1SW"
+      "id": "3W4yMC1SW",
+      "email": "hoangdv@gmail.com",
+      "password": "123456"
     }
   ],
   "transactions": [
     {
-      "userId": "R1EgOvXDS",
-      "bookId": "zJ1vakiC1",
-      "id": "1LJt98tED",
-      "isCompleted": true
-    },
-    {
-      "userId": "R1EgOvXDS",
-      "bookId": "zJ1vakiC1",
-      "id": "sQASZCRDu",
-      "isCompleted": false
-    },
-    {
-      "userId": "kbmZOIgAi",
-      "bookId": "SgBqBv8M5",
-      "id": "rUFytYbQL",
-      "isCompleted": true
-    },
-    {
-      "userId": "agTYxwPez",
-      "bookId": "3wno49tth",
+      "username": "user1",
+      "title": "Home",
       "isCompleted": false,
-      "id": "KEkfvuS0t"
+      "id": "3vGCMMPEM"
+    },
+    {
+      "username": "admin",
+      "title": "Home",
+      "isCompleted": false,
+      "id": "ev0GrjgIU"
     }
   ]
 }

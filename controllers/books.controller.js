@@ -26,7 +26,7 @@ module.exports.getEditBookTitle = function (req, res) {
 }
 
 module.exports.postEditBookTitle =  function (req, res) {
-    db.get('books').find({ id: req.params.id }).assign({ title: req.body.title }).value();
+    db.get('books').find({ id: req.params.id }).assign({ title: req.body.title }).write();
     res.redirect('/books');
 }
 

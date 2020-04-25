@@ -3,7 +3,8 @@ const db = require('../db');
 
 module.exports.getTransactions = function(req, res){
     res.render('transactions', {
-        transactions: db.get('transactions').value()
+        transactions: db.get('transactions').value(),
+        user: db.get('users').find({id: req.cookies.userId}).value()
     });
 }
 
