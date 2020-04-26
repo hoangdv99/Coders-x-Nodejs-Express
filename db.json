@@ -42,6 +42,13 @@
       "email": "user1@gmail.com",
       "password": "$2a$10$TyrDt9ZzTFfYGBBrvNNrF.0wGQQBBBtS0k7VE8rJvt72/ls73rcQ2",
       "wrongLoginCount": 4
+    },
+    {
+      "id": "XNvk-icmD",
+      "username": "hoangdv257",
+      "email": "hoangdv257@gmail.com",
+      "password": "$2a$10$xdAv.9neRP6EWRarg6WKGuVaVIV4O0qQHqRxEvdY4lQ.0GqvMyWGW",
+      "wrongLoginCount": 3
     }
   ],
   "transactions": []
