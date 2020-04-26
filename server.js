@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 // for parsing application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true })); 
 //for parsing cookie
-app.use(cookieParser());
+app.use(cookieParser('jkadaflkjhahjk90938932'));
 //books route
 app.use('/books', authMiddleware.requireAuth, booksRoute);
 //users route

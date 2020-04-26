@@ -8,7 +8,6 @@ module.exports.postLogin = function (req, res) {
     let email = req.body.email;
     let password = req.body.password;
     let user = db.get('users').find({ email: email }).value();
-    let flag = 0;
     if (!user) {
         res.render('login', {
             error: 'User does not exist!',
@@ -25,7 +24,9 @@ module.exports.postLogin = function (req, res) {
         } else {
             bcrypt.compare(password, user.password, function (err, result) {
                 if (result == true) {
-                    res.cookie('userId', user.id);
+                    res.cookie('userId', user.id, {
+                        signed: true
+                    });
                     res.redirect('/transactions');
                 } else {
                     wrongLoginCount++;

@@ -4,7 +4,7 @@ const db = require('../db');
 module.exports.getTransactions = function(req, res){
     res.render('transactions', {
         transactions: db.get('transactions').value(),
-        user: db.get('users').find({id: req.cookies.userId}).value()
+        user: db.get('users').find({id: req.signedCookies.userId}).value()
     });
 }
 
@@ -16,7 +16,7 @@ module.exports.getCreateTransaction = function(req, res){
 }
 
 module.exports.postCreateTransaction = function(req, res){
-    let user = db.get('users').find({ id: req.cookies.userId}).value();
+    let user = db.get('users').find({ id: req.signedCookies.userId}).value();
 
     db.get('transactions').push({ id: shortid.generate(),
                                   isCompleted: false,
