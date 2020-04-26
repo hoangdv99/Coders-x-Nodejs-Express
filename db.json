@@ -23,25 +23,26 @@
   ],
   "users": [
     {
-      "id": "340DvHHWe",
+      "id": "yiO7lUCMI",
       "username": "admin",
       "email": "admin@gmail.com",
-      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "password": "$2a$10$EBlIMymVupzf9Ug/9rpfa.3NGHt0J3Bj80LA.XBNXkrA9cS5LB6hC",
       "isAdmin": true
     },
     {
-      "id": "hlJXOlZD8",
+      "id": "gUXUYodS8",
+      "username": "user2",
+      "email": "user2@gmail.com",
+      "password": "$2a$10$WgH.orK320lqezTN18vmqefu/5DX0IGSbyvaA2s8DLNwSwAJbRUzu",
+      "wrongLoginCount": 5
+    },
+    {
+      "id": "y4mCrgc4N",
       "username": "user1",
       "email": "user1@gmail.com",
-      "password": "e10adc3949ba59abbe56e057f20f883e"
+      "password": "$2a$10$TyrDt9ZzTFfYGBBrvNNrF.0wGQQBBBtS0k7VE8rJvt72/ls73rcQ2",
+      "wrongLoginCount": 4
     }
   ],
-  "transactions": [
-    {
-      "id": "Cs6vniSNC",
-      "isCompleted": false,
-      "username": "user1",
-      "bookTitle": "Harry Potter 1"
-    }
-  ]
+  "transactions": []
 }

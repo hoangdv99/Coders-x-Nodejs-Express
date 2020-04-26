@@ -1,5 +1,5 @@
 const shortid = require('shortid');
-const md5 = require('md5');
+const bcrypt = require('bcryptjs');
 const db = require('../db');
 
 module.exports.getUsers = function (req, res) {
@@ -18,12 +18,18 @@ module.exports.postCreateUser = function (req, res) {
     let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
-    let hashedPassword = md5(password);
-    
-    db.get('users').push({ id: shortid.generate(),
-                           username: username,
-                           email: email,
-                           password: hashedPassword}).write();
+
+    bcrypt.hash(password, 10, function(err, hashedPassword){
+        if(err){
+            console.log(err);
+        }else{
+            db.get('users').push({  id: shortid.generate(),
+                                    username: username,
+                                    email: email,
+                                    password: hashedPassword,
+                                    wrongLoginCount: 0 }).write();
+        }
+    });
     res.redirect('/login');
 }
 

@@ -1,30 +1,41 @@
-const md5 = require('md5');
+const bcrypt = require('bcryptjs');
 const db = require('../db');
 module.exports.getLogin = function(req, res){
     res.render('login');
 }
 
-module.exports.postLogin = function(req, res){
-    let errors = [];
+module.exports.postLogin = function (req, res) {
     let email = req.body.email;
     let password = req.body.password;
-    let hashedPassword = md5(password);
-    let user = db.get('users').find({ email: email}).value();
-    
-    if(!user){
-        errors.push('Wrong username or password.');
-    }
-    if(user){
-        if(user.password !== hashedPassword)
-            errors.push('Wrong username or password.');
-    }
-    if(errors.length){
+    let user = db.get('users').find({ email: email }).value();
+    let flag = 0;
+    if (!user) {
         res.render('login', {
-            errors: errors,
+            error: 'User does not exist!',
             values: req.body
         });
-        return;
     }
-    res.cookie('userId', user.id);
-    res.redirect('/transactions');
+    if (user) {
+        let wrongLoginCount = user.wrongLoginCount;
+        if (wrongLoginCount >= 5) {
+            res.render('login', {
+                error: 'Login wrong than 4 times. Contact admin to unlock account!'
+            });
+
+        } else {
+            bcrypt.compare(password, user.password, function (err, result) {
+                if (result == true) {
+                    res.cookie('userId', user.id);
+                    res.redirect('/transactions');
+                } else {
+                    wrongLoginCount++;
+                    res.render('login', {
+                        error: 'Wrong password!'
+                    });
+                    db.get('users').find({ email: email }).assign({ wrongLoginCount: wrongLoginCount }).write();
+                }
+            });
+
+        }
+    }
 }

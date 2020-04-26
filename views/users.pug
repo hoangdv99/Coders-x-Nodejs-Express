@@ -15,10 +15,9 @@ block content
           td= user.id
           td= user.username
           td= user.email
-          td
-            a(href="/users/"+user.id+"/edit") Edit
-          td
-            if user.isAdmin !== true
+          if user.isAdmin !== true
+            td
+              a(href="/users/"+user.id+"/edit") Edit
+            td
               a(href="/users/"+user.id+"/delete") Delete
-        
         
