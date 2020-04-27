@@ -9,7 +9,7 @@ module.exports.getTransactions = function(req, res){
 }
 
 module.exports.getCreateTransaction = function(req, res){
-    res.render('create_transaction', {
+    res.render('books', {
         users: db.get('users').value(),
         books: db.get('books').value()
     });

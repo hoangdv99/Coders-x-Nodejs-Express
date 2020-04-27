@@ -1,16 +1,47 @@
 extends ../layouts/header
 block content
-  form(action="/books/create", method="post")
-    .form-group
-      label(for="") Title
-      input.form-control(name="title", type="text")
-    .form-group
-      label Description
-      input.form-control(name="description", type="text")
-    button.btn.btn-primary Create
-  ul
-    each book in books
-      li= book.title
-        a(href="/books/"+book.id+"/edit") &nbsp Edit &nbsp
-        a(href="/books/"+book.id+"/delete") Delete
+  .container
+    h3.h3 Library
+    .row
+      each book in books
+        .col-md-3.col-sm-6
+          .product-grid6
+            .product-image6
+              a(href='#')
+                img.pic-1(src=book.image)
+            .product-content
+              h3.title
+                a(href='#')= book.title
+            a.social(href="#", class="btn btn-primary btn-lg active", role="button", aria-pressed="true") Create transaction
+
+  if pages > 0
+    ul.pagination.justify-content-center
+      if current == 1
+        li.page-item.disabled
+          a.page-link(href="#") First
+      else
+        li.page-item
+          a.page-link(href="/books?page=1") First
+      - var i = (Number(current) > 5 ? Number(current) - 4 : 1)
+      if i !== 1
+        li.page-item.disabled
+          a.page-link(href="#") ...
+      while i <= (Number(current) + 4) && i <= pages
+        if i == current
+          li.page-item
+            a.page-link(href="#")= i
+        else
+          li.page-item
+            a.page-link(href="/books?page="+i)= i
+        if i == Number(current) + 4 && i < pages
+          li.page-item.disabled
+            a.page-link(href="#") ...
+        - i++
+      if current == pages
+        li.page-item.disabled
+          a.page-link(href="#") Last
+      else
+        li.page-item
+          a.page-link(href="/books?page="+pages) Last
+
 
