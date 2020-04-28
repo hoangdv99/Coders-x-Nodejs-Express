@@ -1,6 +1,7 @@
 const shortid = require('shortid');
 const bcrypt = require('bcryptjs');
 const db = require('../db');
+const  cloudinary = require('cloudinary').v2;
 
 module.exports.getUsers = function (req, res) {
     res.render('users', {
@@ -46,6 +47,24 @@ module.exports.getEditUser = function (req, res) {
 }
 
 module.exports.postEditUser = function (req, res) {
-    db.get('users').find({ id: req.params.id }).assign({ username: req.body.username }).value();
-    res.redirect('/users');
+    let newUsername = req.body.username;
+    let newEmail = req.body.email;
+    let newPassword = req.body.password;
+    
+    if(req.file === undefined){
+        cloudinary.uploader.upload('./public/default-avatar.png', function(error, result){
+            if(error){
+                console.log(error);
+            }
+            db.get('users').find({ id: req.params.id }).assign({ username: newUsername, email: newEmail, avatarUrl: result.url, password: newPassword}).write();
+            res.redirect('/users');
+            
+        });
+    }else{
+        cloudinary.uploader.upload(req.file.path, function(error, result){
+            db.get('users').find({ id: req.params.id }).assign({ username: newUsername, email: newEmail, avatarUrl: result.url, password: newPassword}).write();
+            res.redirect('/users');
+        });
+    }
+    
 }

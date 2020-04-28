@@ -5,6 +5,7 @@ block content
     thead.thead-dark
       tr
         th ID
+        th Avatar
         th Username
         th Email
         th
@@ -13,11 +14,17 @@ block content
       each user in users
         tr
           td= user.id
+          if user.avatarUrl
+            td
+              img.avatar(src= user.avatarUrl)
+          else
+            td
+              img.avatar(src="./default-avatar.png")
           td= user.username
           td= user.email
           if user.isAdmin !== true
             td
-              a(href="/users/"+user.id+"/edit") Edit
+              a(href="/users/"+user.id+"/profile") Edit
             td
               a(href="/users/"+user.id+"/delete") Delete
         

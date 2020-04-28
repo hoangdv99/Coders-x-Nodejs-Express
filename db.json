@@ -607,6 +607,7 @@
       "username": "admin",
       "email": "admin@gmail.com",
       "password": "$2a$10$EBlIMymVupzf9Ug/9rpfa.3NGHt0J3Bj80LA.XBNXkrA9cS5LB6hC",
+      "avatarUrl": "",
       "isAdmin": true,
       "wrongLoginCount": 0
     },
@@ -614,7 +615,8 @@
       "id": "gUXUYodS8",
       "username": "user2",
       "email": "user2@gmail.com",
-      "password": "$2a$10$WgH.orK320lqezTN18vmqefu/5DX0IGSbyvaA2s8DLNwSwAJbRUzu",
+      "password": "123456",
+      "avatarUrl": "http://res.cloudinary.com/hoangdv99/image/upload/v1588062725/r0kipqt93jyz5ho5ra9q.png",
       "wrongLoginCount": 5
     },
     {
@@ -622,6 +624,7 @@
       "username": "user1",
       "email": "user1@gmail.com",
       "password": "$2a$10$TyrDt9ZzTFfYGBBrvNNrF.0wGQQBBBtS0k7VE8rJvt72/ls73rcQ2",
+      "avatarUrl": "",
       "wrongLoginCount": 5
     },
     {
@@ -629,6 +632,7 @@
       "username": "hoangdv257",
       "email": "hoangdv257@gmail.com",
       "password": "$2a$10$xdAv.9neRP6EWRarg6WKGuVaVIV4O0qQHqRxEvdY4lQ.0GqvMyWGW",
+      "avatarUrl": "",
       "wrongLoginCount": 0
     }
   ],
